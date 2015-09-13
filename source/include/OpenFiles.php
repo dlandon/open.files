@@ -15,7 +15,6 @@ function ofiles() {
 //* cd to /tmp or else lsof itself will show up as working dir on websserver home
 $res = shell_exec("cd /tmp;lsof -F facn /mnt/disk* /mnt/user* /dev/loop* /dev/md* /mnt/cache 2>/dev/null");
 $res1 = split("\n", $res);
-$old_c = "~";
 $blocked = false;
 $bcount = 0;
 $process=0;
@@ -76,9 +75,13 @@ if ($pnum) {
 		$bb = "&nbsp;<button onclick='openBox(\"/plugins/open.files/scripts/killprocess&arg1={$pnum[$pp]}\",\"Kill Process\",450,450,true)'>Kill</button>";
 		$return .= "<tr><td>$prog[$pp]</td><td style='text-align:center'>$pnum[$pp]$bb</td><td style='text-align:center'>$count[$pp]</td><td style='text-align:center'>$blocking[$pp]</td><td>";
 		foreach($flist[$pnum[$pp]] as $pname) {
+			if (strlen($pname) > 110) {
+				$pname = substr($pname, 0, 110);
+				$pname .= " <strong>...</strong>";
+			}
 			$return .= "$pname<br>";
 		}
-			$return .= "</td></tr>";
+		$return .= "</td></tr>";
 	}
 }
 
