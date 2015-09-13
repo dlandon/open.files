@@ -1,0 +1,84 @@
+#!/usr/bin/php
+<?PHP
+/* Copyright 2015, Dan Landon.
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License version 2,
+ * as published by the Free Software Foundation.
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ */
+?>
+
+<?
+
+function get_ps_name($pnum) {
+	return shell_exec("ps h $pnum |  awk '{ print $5 }'  2>&1 ");
+}
+
+function flush_all() {
+	ob_flush();
+	flush();
+	usleep(500);  //* 5 hundreths of a second
+}
+
+$pnum = $argv[1];
+
+$pname = get_ps_name($pnum);
+echo "Ending process $pnum...\n";
+$ps = shell_exec("ps --no-headers  $pnum  2> /dev/null");
+
+//***************************************
+//* Check to see if it is still running
+//***************************************
+if (strlen($ps) >2) {
+	//echo "... program:$prog (id:$pnum) is using $fname\n";
+	flush_all();
+
+	//***************************************
+	//* Kill softly
+	//***************************************
+
+	shell_exec("kill -INT $pnum  2> /dev/null");
+	$ps = shell_exec("ps --no-headers  $pnum  2> /dev/null");
+	if (strlen($ps) >2) {
+		echo "Checking...\n";
+		sleep(3);
+
+		//***************************************
+		//*  Kill hard
+		//***************************************        
+
+		shell_exec("kill $pnum  2> /dev/null");
+		$ps = shell_exec("ps --no-headers  $pnum  2>&1 ");
+		if (strlen($ps) >2) {
+
+			//***************************************
+			//*  Kill -9
+			//***************************************   
+
+			echo "Process $pnum could not be gently killed... will use SIGKILL...\n";
+			echo "Process $pnum (" . shell_exec("kill -9 $pnum 2> /dev/null") . ")...\n";
+		} else {
+			echo "Process $pnum killed with SIGHUP...\n";
+		}
+	} else {
+		echo "Process $pnum ... killed...\n";
+	}
+				
+} else {
+	echo "Process $pnum has ended...";
+}
+			
+$ps = shell_exec("ps --no-headers  $pnum  2>&1 ");
+
+if (strlen($ps) >2) {
+	echo "FAILED....\n";
+} else {
+	echo "Success...\n";
+}
+    
+flush_all();
+
+?>

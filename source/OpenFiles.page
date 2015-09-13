@@ -1,0 +1,39 @@
+Menu="SystemInformation"
+Type="xmenu"
+Title="Open Files"
+Icon="open.files.png"
+Tabs="true"
+---
+<?PHP
+/* Copyright 2015, Dan Landon.
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License version 2,
+ * as published by the Free Software Foundation.
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ */
+?>
+
+<?
+require_once("/usr/local/emhttp/plugins/open.files/include/OpenFiles.php");
+?>
+
+<table class='share_status small'>
+<thead><tr><td width='8%'>Program&nbsp;<strong>*<strong></td><td width='8%'>Process ID</td><td width='6%'>Open Files</td><td width='20%'>Files that may prevent unRAID shutdown</td><td width='auto'>File Name and Path</td></tr></thead>
+<tbody id="streams"><?echo(ofiles());?></tbody>
+</table>
+<p><strong>
+* An entry for 'bash' means you have a terminal session open with the working directory on the array.
+</p>
+<p>
+* If 'smbd' is listed, it means that another computer has a samba share mounted. Files open by Samba usually won't prevent array shutdown.
+</strong></p>
+<div>
+	<blockquote class='inline_help'>
+	<p>Click on the 'Kill' button to stop the process that is holding the files open.  A dialog box will open showing you the progress of killing the process holding those files open.</p>
+	</blockquote>
+</div>
+<input type="button" value="Refresh" onclick="refresh()">
+<input type="button" value="Done" onclick="done()">

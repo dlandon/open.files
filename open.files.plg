@@ -1,0 +1,75 @@
+<?xml version='1.0' standalone='yes'?>
+
+<!DOCTYPE PLUGIN [
+<!ENTITY name       "open.files">
+<!ENTITY author     "dlandon">
+<!ENTITY version    "2015.09.13">
+<!ENTITY launch    "Tools/OpenFiles">
+<!ENTITY pluginURL  "https://github.com/dlandon/open.files/raw/master/open.files.plg">
+]>
+
+<PLUGIN  name="&name;"
+         author="&author;"
+         version="&version;"
+         launch="&launch;"
+         pluginURL="&pluginURL;">
+
+<CHANGES>
+##&name;
+###2015.09.12
+- Initial unRAID V6.1 release.
+</CHANGES>
+
+<!--
+Copyright 2015, Dan Landon
+The Open Files plugin shows files that are open that could
+prevent a clean shutdown of the array and lest you kill those
+tasks.
+-->
+
+<!--
+Get the open.files plugin bundle.
+-->
+<FILE Name="/boot/config/plugins/&name;/&name;-&version;.tgz">
+<URL>"https://github.com/dlandon/&name;/raw/master/&name;-&version;.tgz"</URL>
+</FILE>
+
+<!--
+Prepare for installation.
+-->
+<FILE Run="/bin/bash">
+<INLINE>
+# Remove emhttp files so we can re-install.
+rm -f /usr/local/emhttp/plugins/&name;/* 2>/dev/null
+
+# Remove old 'bundle' files.
+rm -f $(ls /boot/config/plugins/&name;/&name;*.tgz 2>/dev/null | grep -v '&version;')
+
+# Install the 'bundle'.
+tar -xf /boot/config/plugins/&name;/&name;-&version;.tgz -C /usr/local/emhttp/plugins 2>/dev/null
+
+# Adjust script permissions.
+chmod 755 /usr/local/emhttp/plugins/&name;/scripts/* 2>/dev/null
+
+echo ""
+echo "-----------------------------------------------------------"
+echo " Plugin &name; is installed."
+echo " Copyright 2015, Dan Landon"
+echo " Version: &version;"
+echo "-----------------------------------------------------------"
+echo ""
+</INLINE>
+</FILE>
+
+<!--
+The 'remove' script.
+-->
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
+# Remove all plugin files.
+rm -f -r /usr/local/emhttp/plugins/&name; 2>/dev/null
+rm -f -r /boot/config/plugins/&name; 2>/dev/null
+</INLINE>
+</FILE>
+
+</PLUGIN>
