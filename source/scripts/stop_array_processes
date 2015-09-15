@@ -1,0 +1,54 @@
+#!/bin/bash
+# Copyright 2015, Dan Landon.
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License version 2,
+# as published by the Free Software Foundation.
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+
+echo "Stopping Array Processes..."
+
+if [ -e /proc/mdcmd ]
+then
+	if [ -n "`cat /proc/mdcmd | grep "mdState=STARTED"`" ]
+	then
+		echo "Stopping Plugins..."
+
+		# Invoke all 'any_event' scripts that might exist
+		for Dir in /usr/local/emhttp/plugins/*
+		do
+		  if [ -x $Dir/event/any_event ]; then
+			$Dir/event/any_event
+		  fi
+		done
+
+		# Invoke specific event scripts that might exist for this event
+		for Dir in /usr/local/emhttp/plugins/*
+		do
+		  if [ -x $Dir/event/stopping_svcs ]; then
+			$Dir/event/stopping_svcs
+		  fi
+		done
+
+		# Invoke specific event scripts that might exist for this event
+		for Dir in /usr/local/emhttp/plugins/*
+		do
+		  if [ -x $Dir/event/unmounting_disks ]; then
+			$Dir/event/unmounting_disks
+		  fi
+		done
+
+		echo "Stopping unRAID..."
+
+		[ -x /etc/rc.d/rc.avahidaemon ] && /etc/rc.d/rc.avahidaemon stop
+		[ -x /etc/rc.d/rc.samba  ] && /etc/rc.d/rc.samba  stop
+		[ -x /etc/rc.d/rc.nfsd   ] && /etc/rc.d/rc.nfsd   stop
+		[ -x /etc/rc.d/rc.atalk  ] && /etc/rc.d/rc.atalk  stop
+	else
+		echo "Array is Stopped..."
+	fi
+ else
+	echo "/proc/mdcmd does not exist..."
+fi

@@ -37,6 +37,30 @@ require_once("/usr/local/emhttp/plugins/open.files/include/OpenFiles.php");
 </div>
 <input type="button" value="Refresh" onclick="refresh()">
 <input type="button" value="Done" onclick="done()">
+<div>
+	<strong>*** Troubleshooting shutdown problems. ***</strong>
+	<p>Click 'Help' for an explanation of how this process works.</p>
+	<blockquote class='inline_help'>
+	<p>The 'Stop Array Processes' will stop all processes on the array.
+	The 'Stop Array Processes' is the same as when you stop the array at the webgui, except the array is not stopped.
+	This puts the system in the state of a normal shutdown without stopping the array.
+	This is equivalent to the 'Maintenance' mode of array operation.
+	After this is done, you should not see any processes left running with open files that would prevent a shutdown.
+	If there are any processes left running that will prevent a shutdown, you can Kill the processes, but you should really troubleshoot why the process is holding the files open and solve that problem so a normal shutdown can occur from the webgui.
+	<p>After the array processes are stopped, you can stop the array and shut it down normally, or you can stop the array and then restart it.
+	Just go to the 'Main->Array Operation' tab aand choose the operation.</p>
+	<p>If you don't understand what is going on, you can go to 'Tools->Diagnostics' and capture information that can be posted on the LimeTech forum for others to help you in diagnosing the shutdown problem.</p>
+	<p><strong>Note:</strong> This procedure is not intended to be a normal array shutdown.
+	It is only intended to be a troubleshooting tool.</p>
+	</blockquote>
+	<div style="position:relative;float:left;width:50%;text-align:left; margin-bottom:24px">
+		<form name="StopArrayProcesses" method="POST" action="/update.htm" target="progressFrame">
+			<input type="hidden" name="cmd" value="/plugins/open.files/scripts/stop_array_processes">
+			<input type="submit" name="runCmd" value="Stop Array Processes" disabled>
+			<input type="checkbox" name="confirmStop" value="OFF" onClick="StopArrayProcesses.runCmd.disabled=!confirmStop.checked"><small>Yes I want to do this</small>
+		</form>
+	</div>
+</div>
 
 <script type="text/javascript">
 $(function(){
