@@ -24,9 +24,10 @@ function flush_all() {
 }
 
 $pnum = $argv[1];
-
 $pname = get_ps_name($pnum);
+
 echo "Ending process $pnum...\n";
+
 $ps = shell_exec("ps --no-headers  $pnum  2> /dev/null");
 
 //***************************************
@@ -73,12 +74,11 @@ if (strlen($ps) >2) {
 			
 $ps = shell_exec("ps --no-headers  $pnum  2>&1 ");
 
-if (strlen($ps) >2) {
+if (strlen($ps) > 2) {
 	echo "FAILED....\n";
 } else {
 	echo "Success...\n";
 }
     
 flush_all();
-
 ?>

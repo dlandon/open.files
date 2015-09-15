@@ -3,7 +3,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name       "open.files">
 <!ENTITY author     "dlandon">
-<!ENTITY version    "2015.09.14a">
+<!ENTITY version    "2015.09.15">
 <!ENTITY launch    "Tools/OpenFiles">
 <!ENTITY pluginURL  "https://github.com/dlandon/open.files/raw/master/open.files.plg">
 ]>
@@ -16,6 +16,9 @@
 
 <CHANGES>
 ##&name;
+###2015.09.15
+- Fix: Changed 'Main->Files Open' to 'Main->Open Files' to minimize confusion.
+
 ###2015.09.14a
 - Add: Files Open tab on Main.
 

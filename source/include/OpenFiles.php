@@ -37,7 +37,7 @@ $var = substr($stg,1);
 			$count[$process]++;
 			$flist[$process][$i++] = $var;
 			if ($cwd) {
-				$flist[$process][$i-1] .= "  (working directory)";
+				$flist[$process][$i-1] .= " (working directory)";
 			}
 			break;
 		case "a" :
@@ -58,13 +58,11 @@ $var = substr($stg,1);
 			}
 			break;
 		case "p" :
-			$process=$var;
-			$i=0;
+			$process = $var;
+			$i = 0;
 			break;
 		default :
 			break;
-
-		$lastvar = $var;
 	}
 }
 
