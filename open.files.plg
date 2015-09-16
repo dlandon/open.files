@@ -3,7 +3,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name       "open.files">
 <!ENTITY author     "dlandon">
-<!ENTITY version    "2015.09.16">
+<!ENTITY version    "2015.09.16a">
 <!ENTITY launch    "Tools/OpenFiles">
 <!ENTITY pluginURL  "https://github.com/dlandon/open.files/raw/master/open.files.plg">
 ]>
@@ -16,6 +16,9 @@
 
 <CHANGES>
 ##&name;
+###2015.09.16a
+- Add: Cosmetic changes.
+
 ###2015.09.16
 - Add: Check for array started before allowing 'Stop Array Processes'.
 - Fix: Removed unused code.
