@@ -3,7 +3,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name       "open.files">
 <!ENTITY author     "dlandon">
-<!ENTITY version    "2015.09.15a">
+<!ENTITY version    "2015.09.16">
 <!ENTITY launch    "Tools/OpenFiles">
 <!ENTITY pluginURL  "https://github.com/dlandon/open.files/raw/master/open.files.plg">
 ]>
@@ -16,11 +16,17 @@
 
 <CHANGES>
 ##&name;
+###2015.09.16
+- Add: Check for array started before allowing 'Stop Array Processes'.
+- Fix: Removed unused code.
+- Fix: Rewrote README.md.
+
 ###2015.09.15a
 - Fix: When open files plugin is installed by itself, it was not creating a "System Information" group in the Tools.
 - Add: Added a 'Stop Array Processes' button to stop all array processes, but not stop the array.
 - Add: Additional help to explain the troubleshooting process.
 - Add: Removed the open files tab from Main.  It really didn't belong there, caused issues with the tabs, and doesn't have much value now.
+- Add: 'Yes I want to do this' checkbox to confirm the 'Stop Array Processes'.
 
 ###2015.09.15
 - Fix: Changed 'Main->Files Open' to 'Main->Open Files' to minimize confusion.

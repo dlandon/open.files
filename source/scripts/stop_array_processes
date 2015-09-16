@@ -40,7 +40,7 @@ then
 		  fi
 		done
 
-		echo "Stopping unRAID..."
+		echo "Stopping unRAID processes..."
 
 		[ -x /etc/rc.d/rc.avahidaemon ] && /etc/rc.d/rc.avahidaemon stop
 		[ -x /etc/rc.d/rc.samba  ] && /etc/rc.d/rc.samba  stop

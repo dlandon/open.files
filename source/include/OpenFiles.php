@@ -11,7 +11,7 @@
 ?>
 
 <?
-function ofiles($type) {
+function ofiles() {
 //* cd to /tmp or else lsof itself will show up as working dir on websserver home
 $res = shell_exec("cd /tmp;lsof -F facn /mnt/disk* /mnt/user* /dev/loop* /dev/md* /mnt/cache 2>/dev/null");
 $res1 = split("\n", $res);
@@ -66,50 +66,25 @@ $var = substr($stg,1);
 	}
 }
 
-switch ($type) {
-	case 'en' :
-		if ($blocked) {
-			if ($bcount == 1) {
-				$return .= "There is 1 <a href='/Tools/OpenFiles' target='_top'>open file</a> that may block array shutdown.";
-			} else {
-				$return .= "There are $bcount <a href='/Tools/OpenFiles' target='_top'>open files</a> that may block array shutdown.";
+$bb="";
+if ($pnum) {
+	foreach ($pnum as $pp) {
+		$ss = $flist[$pnum[$pp]][0];
+		$bb = "&nbsp;<button onclick='openBox(\"/plugins/open.files/scripts/killprocess&arg1={$pnum[$pp]}\",\"Kill Process\",450,450,true)'>Kill</button>";
+		$return .= "<tr><td>$prog[$pp]</td><td style='text-align:center'>$pnum[$pp]$bb</td><td style='text-align:center'>$count[$pp]</td><td style='text-align:center'>$blocking[$pp]</td><td>";
+		foreach($flist[$pnum[$pp]] as $pname) {
+			if (strlen($pname) > 100) {
+				$pname = substr($pname, 0, 100);
+				$pname .= " <strong>...</strong>";
 			}
-		} else {
-			$return .= "No <a href='/Tools/OpenFiles' target='_top'>open files</a> on the array blocking array shutdown.";
+			$return .= "$pname<br>";
 		}
-		break;
+		$return .= "</td></tr>";
+	}
+}
 
-	case 'table' :
-		$bb="";
-		if ($pnum) {
-			foreach ($pnum as $pp) {
-				$ss = $flist[$pnum[$pp]][0];
-				$bb = "&nbsp;<button onclick='openBox(\"/plugins/open.files/scripts/killprocess&arg1={$pnum[$pp]}\",\"Kill Process\",450,450,true)'>Kill</button>";
-				$return .= "<tr><td>$prog[$pp]</td><td style='text-align:center'>$pnum[$pp]$bb</td><td style='text-align:center'>$count[$pp]</td><td style='text-align:center'>$blocking[$pp]</td><td>";
-				foreach($flist[$pnum[$pp]] as $pname) {
-					if (strlen($pname) > 100) {
-						$pname = substr($pname, 0, 100);
-						$pname .= " <strong>...</strong>";
-					}
-					$return .= "$pname<br>";
-				}
-				$return .= "</td></tr>";
-			}
-		}
-
-		if (!($return)) {
-			$return = "<tr><td colspan='7' style='text-align:center'><em>No open files</em></td></tr>";
-		}
-		break;
-	case 'block' :
-		if ($blocked) {
-			$return = "1";
-		} else {
-			$return = "0";
-		}
-		break;
-	default:
-		break;
+if (!($return)) {
+	$return = "<tr><td colspan='7' style='text-align:center'><em>No open files</em></td></tr>";
 }
 
 return $return;
