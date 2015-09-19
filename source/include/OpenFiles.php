@@ -17,7 +17,7 @@ $res = shell_exec("cd /tmp;lsof -F facn /mnt/disk* /mnt/user* /dev/loop* /dev/md
 $res1 = split("\n", $res);
 $blocked = false;
 $bcount = 0;
-$process=0;
+$process = 0;
 
 $return = "";
 

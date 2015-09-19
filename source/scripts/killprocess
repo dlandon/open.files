@@ -69,7 +69,7 @@ if (strlen($ps) >2) {
 	}
 				
 } else {
-	echo "Process $pnum has ended...";
+	echo "Process $pnum has ended...\n";
 }
 			
 $ps = shell_exec("ps --no-headers  $pnum  2>&1 ");
