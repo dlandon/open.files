@@ -3,9 +3,10 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name       "open.files">
 <!ENTITY author     "dlandon">
-<!ENTITY version    "2015.12.14">
+<!ENTITY version    "2015.12.18">
 <!ENTITY launch    "Tools/OpenFiles">
 <!ENTITY pluginURL  "https://github.com/dlandon/open.files/raw/master/open.files.plg">
+<!ENTITY MD5		"3ad7ed25b0702c6303c8e90c99721ae6">
 ]>
 
 <PLUGIN  name="&name;"
@@ -17,6 +18,9 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Added MD5 checksum to bundle file.
+
+###2015.12.14
 - Add: unRaid version check.  Only unRaid 6.1 and higher.
 
 ###2015.09.20
@@ -88,6 +92,7 @@ Get the plugin bundle.
 -->
 <FILE Name="/boot/config/plugins/&name;/&name;-&version;.tgz">
 <URL>"https://github.com/dlandon/&name;/raw/master/&name;-&version;.tgz"</URL>
+<MD5>&MD5;</MD5>
 </FILE>
 
 <!--
