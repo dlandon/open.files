@@ -3,10 +3,10 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name       "open.files">
 <!ENTITY author     "dlandon">
-<!ENTITY version    "2015.12.18">
+<!ENTITY version    "2016.09.06">
 <!ENTITY launch    "Tools/OpenFiles">
 <!ENTITY pluginURL  "https://github.com/dlandon/open.files/raw/master/open.files.plg">
-<!ENTITY MD5		"3ad7ed25b0702c6303c8e90c99721ae6">
+<!ENTITY MD5		"fddb9a19b8a23d5256058dbb42f5221d">
 ]>
 
 <PLUGIN  name="&name;"
@@ -18,6 +18,9 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Removed stop array processes.
+
+###2015.12.18
 - Added MD5 checksum to bundle file.
 
 ###2015.12.14
