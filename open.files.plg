@@ -122,7 +122,7 @@ The 'post-install' script.
 echo ""
 echo "-----------------------------------------------------------"
 echo " Plugin &name; is installed."
-echo " Copyright 2015, Dan Landon"
+echo " Copyright 2015-2016, Dan Landon"
 echo " Version: &version;"
 echo "-----------------------------------------------------------"
 echo ""
