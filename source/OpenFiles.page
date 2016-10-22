@@ -5,7 +5,7 @@ Icon="open.files.png"
 Tabs="true"
 ---
 <?PHP
-/* Copyright 2015, Dan Landon.
+/* Copyright 2015-2016, Dan Landon.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 2,
@@ -17,7 +17,8 @@ Tabs="true"
 ?>
 
 <?
-require_once("/usr/local/emhttp/plugins/open.files/include/OpenFiles.php");
+$docroot = $docroot ?: @$_SERVER['DOCUMENT_ROOT'] ?: '/usr/local/emhttp';
+require_once("$docroot/plugins/open.files/include/OpenFiles.php");
 ?>
 
 <table class='tablesorter shift share_status small' id='tblOpenFiles'>

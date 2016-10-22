@@ -1,5 +1,5 @@
 <?PHP
-/* Copyright 2015, Dan Landon.
+/* Copyright 2015-2016, Dan Landon.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 2,
@@ -14,7 +14,7 @@
 function ofiles() {
 //* cd to /tmp or else lsof itself will show up as working dir on websserver home
 $res = shell_exec("cd /tmp;lsof -F facn /mnt/disk* /mnt/user* /dev/loop* /dev/md* /mnt/cache 2>/dev/null");
-$res1 = split("\n", $res);
+$res1 = explode("\n", $res);
 $blocked = false;
 $bcount = 0;
 $process = 0;
