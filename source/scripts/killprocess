@@ -1,6 +1,6 @@
 #!/usr/bin/php
 <?PHP
-/* Copyright 2015, Dan Landon.
+/* Copyright 2015-2017, Dan Landon.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 2,
@@ -9,9 +9,7 @@
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
  */
-?>
 
-<?
 
 function get_ps_name($pnum) {
 	return shell_exec("ps h $pnum |  awk '{ print $5 }'  2>&1 ");

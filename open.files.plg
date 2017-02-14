@@ -3,10 +3,10 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name       "open.files">
 <!ENTITY author     "dlandon">
-<!ENTITY version    "2016.10.22">
+<!ENTITY version    "2017.02.13">
 <!ENTITY launch    "Tools/OpenFiles">
 <!ENTITY pluginURL  "https://github.com/dlandon/open.files/raw/master/open.files.plg">
-<!ENTITY MD5		"c7795fe8e5aaddc0839bbae03a5976f0">
+<!ENTITY MD5		"5163ca7787d3d56a6ccd54470ef0de28">
 ]>
 
 <PLUGIN  name="&name;"
@@ -18,6 +18,9 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Minor code cleanup and cosmetic changes.
+
+###2016.10.22
 - Updates for compatibility with unRAID 6.2 and later.
 
 ###2016.09.06

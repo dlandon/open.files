@@ -5,7 +5,7 @@ Icon="open.files.png"
 Tabs="true"
 ---
 <?PHP
-/* Copyright 2015-2016, Dan Landon.
+/* Copyright 2015-2017, Dan Landon.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 2,
@@ -14,9 +14,7 @@ Tabs="true"
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
  */
-?>
 
-<?
 $docroot = $docroot ?: @$_SERVER['DOCUMENT_ROOT'] ?: '/usr/local/emhttp';
 require_once("$docroot/plugins/open.files/include/OpenFiles.php");
 ?>
