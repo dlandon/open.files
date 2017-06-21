@@ -3,10 +3,10 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name       "open.files">
 <!ENTITY author     "dlandon">
-<!ENTITY version    "2017.02.13">
+<!ENTITY version    "2017.06.20">
 <!ENTITY launch    "Tools/OpenFiles">
 <!ENTITY pluginURL  "https://github.com/dlandon/open.files/raw/master/open.files.plg">
-<!ENTITY MD5		"5163ca7787d3d56a6ccd54470ef0de28">
+<!ENTITY MD5		"e770010067292a08ebdc895260738f9f">
 ]>
 
 <PLUGIN  name="&name;"
@@ -18,6 +18,9 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Changes for Azure and Gray theme screen widths.
+
+###2017.02.13
 - Minor code cleanup and cosmetic changes.
 
 ###2016.10.22

@@ -70,12 +70,13 @@ if ($pnum) {
 		$ss = $flist[$pnum[$pp]][0];
 		$bb = "&nbsp;<button onclick='openBox(\"/plugins/open.files/scripts/killprocess&arg1={$pnum[$pp]}\",\"Kill Process\",450,450,true)'>Kill</button>";
 		$return .= "<tr><td>$prog[$pp]</td><td style='text-align:center'>$pnum[$pp]$bb</td><td style='text-align:center'>$count[$pp]</td><td style='text-align:center'>$blocking[$pp]</td><td>";
+		$truncate = 85;
 		foreach($flist[$pnum[$pp]] as $pname) {
-			if (strlen($pname) > 100) {
-				$pname = substr($pname, 0, 100);
+			if (strlen($pname) > $truncate) {
+				$pname = substr($pname, 0, $truncate);
 				$pname .= " <strong>...</strong>";
 			}
-			$return .= "$pname<br>";
+			$return .= "$pname</br>";
 		}
 		$return .= "</td></tr>";
 	}

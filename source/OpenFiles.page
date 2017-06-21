@@ -20,7 +20,7 @@ require_once("$docroot/plugins/open.files/include/OpenFiles.php");
 ?>
 
 <table class='tablesorter shift share_status small' id='tblOpenFiles'>
-<thead><tr><th width='8%'>Program&nbsp;<strong>*<strong></th><th width='8%'>Process ID</th><th width='6%'>Open Files</th><th width='20%'>Files that may prevent unRAID shutdown</th><th width='auto'>File Name and Path</th></tr></thead>
+<thead><tr><th width='auto'>Program&nbsp;<strong>*<strong></th><th width='auto'>Process ID</th><th width='auto'>Open Files</th><th width='auto'>Files that may prevent shutdown</th><th width='auto'>File Name and Path</th></tr></thead>
 <tbody id="streams"><?echo(ofiles());?></tbody>
 </table><p><strong>
 * An entry for 'bash' means you have a terminal session open with the working directory on the array.
