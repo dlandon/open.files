@@ -3,10 +3,10 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name       "open.files">
 <!ENTITY author     "dlandon">
-<!ENTITY version    "2017.06.21">
+<!ENTITY version    "2018.03.21">
 <!ENTITY launch    "Tools/OpenFiles">
 <!ENTITY pluginURL  "https://github.com/dlandon/open.files/raw/master/open.files.plg">
-<!ENTITY MD5		"4053cd8c1ae7ec75efa60c34de9cdbf9">
+<!ENTITY MD5		"b833377fa8b32bf3bef3b2f102d6fecf">
 ]>
 
 <PLUGIN  name="&name;"
@@ -18,6 +18,9 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Change minimum unRAID version check.
+
+###2017.06.21
 - Changes for Azure and Gray theme screen widths.
 
 ###2017.02.13
@@ -73,24 +76,37 @@
 </CHANGES>
 
 <!--
-Copyright 2015, Dan Landon
+Copyright 2015-2018, Dan Landon
 The Open Files plugin shows files that are open that could
-prevent a clean shutdown of the array and lest you kill those
+prevent a clean shutdown of the array and lets you kill those
 tasks.
 -->
 
+<!-- The 'version-check' script. -->
+<FILE Run="/usr/bin/php">
+<INLINE>
+<![CDATA[
+<?
+  $version = parse_ini_file("/etc/unraid-version");
+  
+  if ( version_compare($version['version'],"6.1", "<") )
+  {
+    echo "*********************************************************\n";
+    echo "\n";
+    echo "Open Files Requires unRAID version 6.1 or greater to run.\n";
+    echo "\n";
+    echo "*********************************************************\n";
+    exit(1);
+  }
+?>
+]]>
+</INLINE>
+</FILE>
 <!--
 The 'pre-install' script.
 -->
 <FILE Run="/bin/bash">
 <INLINE>
-# Check unRAID version
-source /etc/unraid-version
-if [[ ${version:0:3} == 6.0 ]]; then
-  echo "unRAID version 6.1 or higher is required"
-  exit 1
-fi
-
 # Remove emhttp files so we can re-install.
 rm -f -r /usr/local/emhttp/plugins/&name;/* 2>/dev/null
 
@@ -127,8 +143,8 @@ The 'post-install' script.
 <INLINE>
 echo ""
 echo "-----------------------------------------------------------"
-echo " Plugin &name; is installed."
-echo " Copyright 2015-2016, Dan Landon"
+echo " &name; is installed."
+echo " Copyright 2015-2018, &author;"
 echo " Version: &version;"
 echo "-----------------------------------------------------------"
 echo ""
@@ -146,7 +162,7 @@ rm -f -r /boot/config/plugins/&name; 2>/dev/null
 
 echo ""
 echo "-----------------------------------------------------------"
-echo " Plugin &name; has been removed."
+echo " &name; has been removed."
 echo " Version: &version;"
 echo "-----------------------------------------------------------"
 echo ""
