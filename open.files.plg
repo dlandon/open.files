@@ -18,7 +18,7 @@
 <CHANGES>
 ##&name;
 ###&version;
-- Change minimum unRAID version check.
+- Change minimum Unraid version check.
 
 ###2017.06.21
 - Changes for Azure and Gray theme screen widths.
@@ -27,7 +27,7 @@
 - Minor code cleanup and cosmetic changes.
 
 ###2016.10.22
-- Updates for compatibility with unRAID 6.2 and later.
+- Updates for compatibility with Unraid 6.2 and later.
 
 ###2016.09.06
 - Removed stop array processes.
@@ -36,7 +36,7 @@
 - Added MD5 checksum to bundle file.
 
 ###2015.12.14
-- Add: unRaid version check.  Only unRaid 6.1 and higher.
+- Add: Unraid version check.  Only Unraid 6.1 and higher.
 
 ###2015.09.20
 - Fix: Plugin installation changes.
@@ -72,7 +72,7 @@
 - Add: Ability to sort columns.
 
 ###2015.09.13
-- Initial unRAID V6.1 release.
+- Initial Unraid V6.1 release.
 </CHANGES>
 
 <!--
@@ -93,7 +93,7 @@ tasks.
   {
     echo "*********************************************************\n";
     echo "\n";
-    echo "Open Files Requires unRAID version 6.1 or greater to run.\n";
+    echo "Open Files Requires Unraid version 6.1 or greater to run.\n";
     echo "\n";
     echo "*********************************************************\n";
     exit(1);
@@ -102,6 +102,7 @@ tasks.
 ]]>
 </INLINE>
 </FILE>
+
 <!--
 The 'pre-install' script.
 -->
