@@ -3,21 +3,28 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name       "open.files">
 <!ENTITY author     "dlandon">
-<!ENTITY version    "2018.03.21">
+<!ENTITY version    "2019.01.14">
 <!ENTITY launch    "Tools/OpenFiles">
 <!ENTITY pluginURL  "https://github.com/dlandon/open.files/raw/master/open.files.plg">
-<!ENTITY MD5		"b833377fa8b32bf3bef3b2f102d6fecf">
+<!ENTITY supportURL	"https://forums.unraid.net/topic/41196-open-files-plugin-can-help-with-troubleshooting-why-server-wont-shut-down/">
+<!ENTITY MD5		"56beaf3f857cfff59f25babb0811994d">
 ]>
 
-<PLUGIN  name="&name;"
-         author="&author;"
-         version="&version;"
-         launch="&launch;"
-         pluginURL="&pluginURL;">
+<PLUGIN	name="&name;"
+		author="&author;"
+		version="&version;"
+		launch="&launch;"
+		pluginURL="&pluginURL;"
+		support="&supportURL;"
+		icon="gear"
+		min="6.4.0">
 
 <CHANGES>
 ##&name;
 ###&version;
+- Icons for v6.
+
+2018.03.21
 - Change minimum Unraid version check.
 
 ###2017.06.21
@@ -82,27 +89,6 @@ prevent a clean shutdown of the array and lets you kill those
 tasks.
 -->
 
-<!-- The 'version-check' script. -->
-<FILE Run="/usr/bin/php">
-<INLINE>
-<![CDATA[
-<?
-  $version = parse_ini_file("/etc/unraid-version");
-  
-  if ( version_compare($version['version'],"6.1", "<") )
-  {
-    echo "*********************************************************\n";
-    echo "\n";
-    echo "Open Files Requires Unraid version 6.1 or greater to run.\n";
-    echo "\n";
-    echo "*********************************************************\n";
-    exit(1);
-  }
-?>
-]]>
-</INLINE>
-</FILE>
-
 <!--
 The 'pre-install' script.
 -->
@@ -145,7 +131,7 @@ The 'post-install' script.
 echo ""
 echo "-----------------------------------------------------------"
 echo " &name; is installed."
-echo " Copyright 2015-2018, &author;"
+echo " Copyright 2015-2019, &author;"
 echo " Version: &version;"
 echo "-----------------------------------------------------------"
 echo ""
