@@ -3,11 +3,11 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name       "open.files">
 <!ENTITY author     "dlandon">
-<!ENTITY version    "2020.06.27">
+<!ENTITY version    "2020.11.14">
 <!ENTITY launch    "Tools/OpenFiles">
 <!ENTITY pluginURL  "https://github.com/dlandon/open.files/raw/master/open.files.plg">
 <!ENTITY supportURL	"https://forums.unraid.net/topic/41196-open-files-plugin-can-help-with-troubleshooting-why-server-wont-shut-down/">
-<!ENTITY MD5		"98eb32de7128d6fcd8046a6db2f67482">
+<!ENTITY MD5		"c7a35c6b20e80a0d3614b0f1f3f60a3d">
 ]>
 
 <PLUGIN	name="&name;"
@@ -17,11 +17,15 @@
 		pluginURL="&pluginURL;"
 		support="&supportURL;"
 		icon="gear"
-		min="6.4.0">
+		min="6.4.0"
+		max="6.8.9">
 
 <CHANGES>
 ##&name;
 ###&version;
+- Add: Max version to 6.8.9.
+
+###2020.06.27
 - Add: Multi Language support.
 - Fix: Add Kill button to table.
 - Fix: Trim file path in the middle, rather than truncate long file name.
