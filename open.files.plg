@@ -3,11 +3,11 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name       "open.files">
 <!ENTITY author     "dlandon">
-<!ENTITY version    "2020.11.14">
+<!ENTITY version    "2020.11.20">
 <!ENTITY launch    "Tools/OpenFiles">
 <!ENTITY pluginURL  "https://github.com/dlandon/open.files/raw/master/open.files.plg">
 <!ENTITY supportURL	"https://forums.unraid.net/topic/41196-open-files-plugin-can-help-with-troubleshooting-why-server-wont-shut-down/">
-<!ENTITY MD5		"c7a35c6b20e80a0d3614b0f1f3f60a3d">
+<!ENTITY MD5		"1d9de62baca970f4e1e65ec5ec1438f6">
 ]>
 
 <PLUGIN	name="&name;"
@@ -17,12 +17,14 @@
 		pluginURL="&pluginURL;"
 		support="&supportURL;"
 		icon="gear"
-		min="6.4.0"
-		max="6.8.9">
+		min="6.4.0">
 
 <CHANGES>
 ##&name;
 ###&version;
+- Fix: Revert max version.
+
+###2020.11.14
 - Add: Max version to 6.8.9.
 
 ###2020.06.27
