@@ -16,7 +16,7 @@
 		launch="&launch;"
 		pluginURL="&pluginURL;"
 		support="&supportURL;"
-		icon="gear"
+		icon="folder-open"
 		min="6.4.0">
 
 <CHANGES>
