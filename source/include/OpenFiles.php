@@ -1,5 +1,5 @@
 <?PHP
-/* Copyright 2015-2020, Dan Landon.
+/* Copyright 2015-2021, Dan Landon.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 2,
@@ -87,7 +87,8 @@ if ($time < $timeout) {
 	if ($pnum) {
 		foreach ($pnum as $pp) {
 			$ss = $flist[$pnum[$pp]][0];
-			$bb = "<td><button onclick='openBox(\"/plugins/open.files/scripts/killprocess&arg1={$pnum[$pp]}\",\"Kill Process\",450,450,true)'>"._('Kill')."</button></td>";
+			$bb = "<td><input type='checkbox' onclick='$(\"#kill_button{$pnum[$pp]}\").prop(\"disabled\",!this.checked);'>";
+			$bb .= "<button id='kill_button{$pnum[$pp]}' disabled onclick='openBox(\"/plugins/open.files/scripts/killprocess&arg1={$pnum[$pp]}\",\"Kill Process\",450,450,true)'>"._('Kill')."</button></td>";
 			$return .= "<tr><td>$prog[$pp]</td><td style='text-align:center'>$pnum[$pp]$bb</td><td style='text-align:center'>$count[$pp]</td><td style='text-align:center'>$blocking[$pp]</td><td>";
 			$truncate = 80;
 			$trim = 30;

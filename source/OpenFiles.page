@@ -5,7 +5,7 @@ Icon="folder-open"
 Tabs="true"
 ---
 <?PHP
-/* Copyright 2015-2020, Dan Landon.
+/* Copyright 2015-2021, Dan Landon.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 2,
@@ -28,17 +28,18 @@ require_once("$docroot/plugins/open.files/include/OpenFiles.php");
 ?>
 
 <table class='tablesorter shift share_status small' id='tblOpenFiles'>
-<thead><tr><th width='auto'>_(Program)_<strong>*<strong></th><th width='auto'>_(Process ID)_</th><th width='auto'>_(Kill Process)_</th><th width='auto'>_(Open Files)_</th><th width='auto'>_(Files that may prevent shutdown)_</th><th width='auto'>_(File Name and Path)_</th></tr></thead>
+<thead><tr><th width='auto'>_(Program)_</th><th width='auto'>_(Process ID)_</th><th width='auto'>_(Kill Process)_</th><th width='auto'>_(Open Files)_</th><th width='auto'>_(Files that may prevent shutdown)_</th><th width='auto'>_(File Name and Path)_</th></tr></thead>
 <tbody id="streams"><?echo(ofiles());?></tbody>
 </table>
-<p>* _(An entry for 'bash' means you have a terminal session open with the working directory on the array)_.</p>
-<p>* _(If 'smbd' is listed, it means that another computer has a samba share mounted)_. _(Files open by Samba usually won't prevent array shutdown)_.</p>
+<p><strong>_(Notes)_:</strong></p>
+<li>_(An entry for 'bash' means you have a terminal session open with the working directory on the array)_.</li>
+<li>_(If 'smbd' is listed, it means that another computer has a samba share mounted)_. _(Files open by Samba usually won't prevent array shutdown)_.</li>
 
 :open_files_help_plug:
 > Click on the 'Kill' button to stop the process that is holding the files open.
->  A dialog box will open showing you the progress of killing the process holding those files open.
+> A dialog box will open showing you the progress of killing the process holding those files open.
 >
->Click on 'Program', Process ID', or 'File Name and Path' to change the sort order.
+> Click on 'Program', Process ID', or 'File Name and Path' to change the sort order.
 :end
 
 <input type="button" value="_(Refresh)_" onclick="refresh()">
