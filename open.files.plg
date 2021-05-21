@@ -102,7 +102,7 @@
 </CHANGES>
 
 <!--
-Copyright 2015-2018, Dan Landon
+Copyright 2015-2021, Dan Landon
 The Open Files plugin shows files that are open that could
 prevent a clean shutdown of the array and lets you kill those
 tasks.
