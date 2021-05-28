@@ -3,11 +3,11 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name       "open.files">
 <!ENTITY author     "dlandon">
-<!ENTITY version    "2021.05.19">
+<!ENTITY version    "2021.05.28">
 <!ENTITY launch    "Tools/OpenFiles">
 <!ENTITY pluginURL  "https://github.com/dlandon/open.files/raw/master/open.files.plg">
 <!ENTITY supportURL	"https://forums.unraid.net/topic/41196-open-files-plugin-can-help-with-troubleshooting-why-server-wont-shut-down/">
-<!ENTITY MD5		"8fec97b795682792a7e5fcd3a3c385cc">
+<!ENTITY MD5		"f4b182a6a97ce303539499d890820e21">
 ]>
 
 <PLUGIN	name="&name;"
@@ -22,6 +22,9 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Fix: Minor UI adjustments.
+
+###2021.05.19
 - Fix: Minimum version changed to 6.7.
 - Fix: Remove unneeded images folder.
 
