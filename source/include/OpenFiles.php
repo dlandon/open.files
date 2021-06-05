@@ -13,17 +13,17 @@ $docroot = $docroot ?: @$_SERVER['DOCUMENT_ROOT'] ?: '/usr/local/emhttp';
 $translations = file_exists("$docroot/webGui/include/Translations.php");
 
 if ($translations) {
-  // add translations
+  /* add translations. */
   $_SERVER['REQUEST_URI'] = 'openfiles';
   require_once "$docroot/webGui/include/Translations.php";
 } else {
-  // legacy support (without javascript)
+  /* legacy support (without javascript). */
   $noscript = true;
   require_once "$docroot/plugins/$plugin/include/Legacy.php";
 }
 
 function ofiles() {
-//* cd to /tmp or else lsof itself will show up as working dir on websserver home
+/* cd to /tmp or else lsof itself will show up as working dir on websserver home. */
 $timeout	= 10;
 $time		= -microtime(true); 
 $res		= shell_exec("/usr/bin/timeout ".$timeout." "."cd /tmp;/usr/bin/lsof -F facn /mnt/* /dev/loop* /dev/md* 2>/dev/null");
