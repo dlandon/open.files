@@ -26,7 +26,7 @@ function ofiles() {
 /* cd to /tmp or else lsof itself will show up as working dir on websserver home. */
 $timeout	= 10;
 $time		= -microtime(true); 
-$res		= shell_exec("/usr/bin/timeout ".$timeout." "."cd /tmp;/usr/bin/lsof -F facn /mnt/* /dev/loop* /dev/md* 2>/dev/null");
+$res		= shell_exec("/usr/bin/timeout ".escapeshellarg($timeout)." "."cd /tmp;/usr/bin/lsof -F facn /mnt/* /dev/loop* /dev/md* 2>/dev/null");
 $time		+= microtime(true);
 $return = "<tr><td colspan='7' style='text-align:center;'><em>"._('Command timed out')."! "._('Cannot get list of open files').".</em></td></tr>";
 
