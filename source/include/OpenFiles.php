@@ -9,7 +9,7 @@
  * all copies or substantial portions of the Software.
  */
 
-$docroot = $docroot ?: @$_SERVER['DOCUMENT_ROOT'] ?: '/usr/local/emhttp';
+$docroot = $docroot ?? $_SERVER['DOCUMENT_ROOT'] ?: '/usr/local/emhttp';
 $translations = file_exists("$docroot/webGui/include/Translations.php");
 
 if ($translations) {
@@ -31,7 +31,7 @@ $time		+= microtime(true);
 $return = "<tr><td colspan='7' style='text-align:center;'><em>"._('Command timed out')."! "._('Cannot get list of open files').".</em></td></tr>";
 
 if ($time < $timeout) {
-	$res1 = explode("\n", $res);
+	$res1 = isset($res) ? explode("\n", $res) : array();
 	$blocked = false;
 	$bcount = 0;
 	$process = 0;
@@ -84,7 +84,7 @@ if ($time < $timeout) {
 	}
 
 	$bb="";
-	if ($pnum) {
+	if ((isset($pnum)) && ($pnum)) {
 		foreach ($pnum as $pp) {
 			$ss = $flist[$pnum[$pp]][0];
 			$bb = "<td><input type='checkbox' onclick='$(\"#kill_button{$pnum[$pp]}\").prop(\"disabled\",!this.checked);'>";

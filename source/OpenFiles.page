@@ -16,7 +16,7 @@ Tabs="true"
  */
 
 $plugin = "open.files";
-$docroot = $docroot ?: @$_SERVER['DOCUMENT_ROOT'] ?: '/usr/local/emhttp';
+$docroot = $docroot ?? $_SERVER['DOCUMENT_ROOT'] ?: '/usr/local/emhttp';
 $translations = file_exists("$docroot/webGui/include/Translations.php");
 require_once "$docroot/plugins/$plugin/include/Legacy.php";
 ?>
@@ -48,6 +48,12 @@ require_once("$docroot/plugins/open.files/include/OpenFiles.php");
 <script type="text/javascript">
 $(function(){
 	$('#tblOpenFiles').tablesorter({headers:{2:{sorter:false},3:{sorter:false}}});
+});
+
+$(function() {
+	if ( typeof caPluginUpdateCheck === "function" ) {
+		caPluginUpdateCheck("open.files.plg");
+	}
 });
 </script>
 <?endif;?>
