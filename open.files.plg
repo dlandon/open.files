@@ -2,12 +2,12 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name       "open.files">
 <!ENTITY author     "dlandon">
-<!ENTITY version	"2023.02.09">
+<!ENTITY version	"2023.06.12">
 <!ENTITY launch		"Tools/OpenFiles">
 <!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://forums.unraid.net/topic/41196-open-files-plugin-can-help-with-troubleshooting-why-server-wont-shut-down/">
-<!ENTITY MD5		"c734e97b2daa149f385a69ce975d924f">
+<!ENTITY MD5		"ccacf5219ee4dfceb5de3f61089d213e">
 ]>
 
 <PLUGIN	name="&name;"
@@ -22,6 +22,9 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Fix: Php warnings in killprocess.
+
+###2023.02.09
 - Fix: Php compatibility for 6.12.
 
 ###2022.08.19
