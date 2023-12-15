@@ -86,11 +86,12 @@ if ($time < $timeout) {
 	$bb="";
 	if ((isset($pnum)) && ($pnum)) {
 		foreach ($pnum as $pp) {
-			$ss = $flist[$pnum[$pp]][0];
-			$bb = "<td><input type='checkbox' onclick='$(\"#kill_button{$pnum[$pp]}\").prop(\"disabled\",!this.checked);'>";
-			$bb .= "<button id='kill_button{$pnum[$pp]}' disabled onclick='openBox(\"/plugins/open.files/scripts/killprocess&arg1={$pnum[$pp]}\",\"Kill Process\",450,450,true)'>"._('Kill')."</button></td>";
-			$return .= "<tr><td>$prog[$pp]</td><td style='text-align:center'>$pnum[$pp]$bb</td><td style='text-align:center'>$count[$pp]</td><td style='text-align:center'>$blocking[$pp]</td><td>";
-			$truncate = 80;
+			$ss		= $flist[$pnum[$pp]][0];
+			$bb		= "<input type='checkbox' onclick='$(\"#kill_button{$pnum[$pp]}\").prop(\"disabled\",!this.checked);'>";
+			$bb		.= "<button id='kill_button{$pnum[$pp]}' disabled onclick='openBox(\"/plugins/open.files/scripts/killprocess&arg1={$pnum[$pp]}\",\"Kill Process\",450,450,true)'>"._('Kill')."</button>";
+			$return	.= "<tr><td>$prog[$pp]</td><td>$pnum[$pp]</td><td>$bb</td><td>$count[$pp]</td><td>$blocking[$pp]</td><td>";
+
+			$truncate = 70;
 			$trim = 30;
 			foreach($flist[$pnum[$pp]] as $pname) {
 				if (strlen($pname) > $truncate) {

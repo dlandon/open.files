@@ -27,10 +27,14 @@ require_once "$docroot/plugins/$plugin/include/Legacy.php";
 require_once("$docroot/plugins/open.files/include/OpenFiles.php");
 ?>
 
-<table class='tablesorter shift share_status small' id='tblOpenFiles'>
-<thead><tr><th width='auto'>_(Process)_</th><th width='auto'>_(Process ID)_</th><th width='auto'>_(Kill Process)_</th><th width='auto'>_(Open Files)_</th><th width='auto'>_(Files that may prevent shutdown)_</th><th width='auto'>_(File Name and Path)_</th></tr></thead>
+<link type="text/css" rel="stylesheet" href="<?autov("/plugins/".$plugin."/assets/style-$theme.css")?>">
+<link type="text/css" rel="stylesheet" href="<?autov("/plugins/".$plugin."/assets/open-files.css")?>">
+
+<table class='tablesorter shift open-files' id='tblOpenFiles'>
+<thead><tr><th>_(Process)_</th><th>_(Process ID)_</th><th>_(Kill Process)_</th><th>_(Open)_</th><th>_(May prevent shutdown)_</th><th>_(File Name and Path)_</th></tr></thead>
 <tbody id="streams"><?echo(ofiles());?></tbody>
 </table>
+
 <p><strong>_(Notes)_:</strong></p>
 <li>_(An entry for 'bash' means you have a terminal session open with the working directory on the array)_.</li>
 <li>_(If 'smbd' is listed, it means that another computer has a samba share mounted)_. _(Files open by Samba usually won't prevent array shutdown)_.</li>

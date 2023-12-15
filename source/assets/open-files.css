@@ -1,0 +1,12 @@
+table.open-files {padding: 0px 0px 0px 0px;border-collapse:collapse;white-space:nowrap;}
+table.open-files thead tr>th{text-align:left;}
+table.open-files thead tr>th+th{text-align:center;}
+table.open-files thead tr>th+th+th{text-align:center;min-width:130px;}
+table.open-files thead tr>th+th+th+th{text-align:center;}
+table.open-files thead tr>th+th+th+th+th+th{text-align:left;}
+
+table.open-files tr>td{text-align:left;}
+table.open-files tr>td+td{text-align:center;}
+table.open-files tr>td+td+td{text-align:center;min-width:130px;}
+table.open-files tr>td+td+td+td{text-align:center;}
+table.open-files tr>td+td+td+td+td+td{text-align:left;}
