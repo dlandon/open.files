@@ -2,12 +2,12 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name       "open.files">
 <!ENTITY author     "dlandon">
-<!ENTITY version	"2023.12.15">
+<!ENTITY version	"2023.12.16">
 <!ENTITY launch		"Tools/OpenFiles">
 <!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://forums.unraid.net/topic/41196-open-files-plugin-can-help-with-troubleshooting-why-server-wont-shut-down/">
-<!ENTITY MD5		"a02e196bbe56c107942078646cfcfbba">
+<!ENTITY MD5		"b80e268d5801929f15b215d0896014df">
 ]>
 
 <PLUGIN	name="&name;"
@@ -22,6 +22,9 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Fi: Php warning when killing a process.
+
+###2023.12.15
 - Fix: Style changes for GUI compatibility with 6.13.
 - Fix: Put styles into .css files.
 
