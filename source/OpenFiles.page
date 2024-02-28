@@ -5,7 +5,7 @@ Icon="folder-open"
 Tabs="true"
 ---
 <?PHP
-/* Copyright 2015-2023, Dan Landon.
+/* Copyright 2015-2024, Dan Landon.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 2,
@@ -23,16 +23,17 @@ require_once "$docroot/plugins/$plugin/include/Legacy.php";
 <?if (!$translations):?>
 <?eval('?>'.parse_file("$docroot/plugins/$plugin/OpenFiles.page"))?>
 <?else:?>
-<?
-require_once("$docroot/plugins/open.files/include/OpenFiles.php");
-?>
 
 <link type="text/css" rel="stylesheet" href="<?autov("/plugins/".$plugin."/assets/style-$theme.css")?>">
 <link type="text/css" rel="stylesheet" href="<?autov("/plugins/".$plugin."/assets/open-files.css")?>">
 
 <table class='tablesorter shift open-files' id='tblOpenFiles'>
 <thead><tr><th>_(Process)_</th><th>_(Process ID)_</th><th>_(Kill Process)_</th><th>_(Open)_</th><th>_(May prevent shutdown)_</th><th>_(File Name and Path)_</th></tr></thead>
-<tbody id="streams"><?echo(ofiles());?></tbody>
+<tbody id="open-files">
+	<tr>
+		<td colspan='6'><div class='spinner'></div></td>
+	</tr>
+</tbody>
 </table>
 
 <p><strong>_(Notes)_:</strong></p>
@@ -50,14 +51,32 @@ require_once("$docroot/plugins/open.files/include/OpenFiles.php");
 <input type="button" value="_(Done)_" onclick="done()">
 
 <script type="text/javascript">
-$(function(){
-	$('#tblOpenFiles').tablesorter({headers:{2:{sorter:false},3:{sorter:false}}});
-});
+/* URL for Open Files PHP file. */
+const OFURL = '/plugins/<?=$plugin;?>/include/OpenFiles.php';
 
+function refreshPage() {
+	$.post(OFURL, {
+		'action': 'open_files',
+	}, function (data) {
+		if (data) {
+			/* Fill the open files table. */
+			$('#open-files').html(data);
+
+			/* Set up the table sorter. */
+			$('#tblOpenFiles').tablesorter({headers:{2:{sorter:false},3:{sorter:false}}});
+		}
+	}, 'json');
+}
+
+/*
+	Check for a plugin update and show banner.
+*/
 $(function() {
 	if ( typeof caPluginUpdateCheck === "function" ) {
 		caPluginUpdateCheck("open.files.plg");
 	}
 });
+
+refreshPage();
 </script>
 <?endif;?>
