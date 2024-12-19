@@ -15,17 +15,19 @@ Tabs="true"
  * all copies or substantial portions of the Software.
  */
 
-$plugin = "open.files";
-$docroot = $docroot ?? $_SERVER['DOCUMENT_ROOT'] ?: '/usr/local/emhttp';
-$translations = file_exists("$docroot/webGui/include/Translations.php");
-require_once "$docroot/plugins/$plugin/include/Legacy.php";
-?>
-<?if (!$translations):?>
-<?eval('?>'.parse_file("$docroot/plugins/$plugin/OpenFiles.page"))?>
-<?else:?>
+/* Define our plugin name. */
+define('OPEN_FILES_PLUGIN', 'open.files');
 
-<link type="text/css" rel="stylesheet" href="<?autov("/plugins/".$plugin."/assets/style-$theme.css")?>">
-<link type="text/css" rel="stylesheet" href="<?autov("/plugins/".$plugin."/assets/open-files.css")?>">
+/* Define the docroot path. */
+if (!defined('DOCROOT')) {
+	define('DOCROOT', $_SERVER['DOCUMENT_ROOT'] ?: '/usr/local/emhttp');
+}
+
+/* add translations. */
+$translations = file_exists(DOCROOT."/webGui/include/Translations.php");
+?>
+<link type="text/css" rel="stylesheet" href="<?autov("/plugins/".OPEN_FILES_PLUGIN."/assets/style-$theme.css")?>">
+<link type="text/css" rel="stylesheet" href="<?autov("/plugins/".OPEN_FILES_PLUGIN."/assets/open-files.css")?>">
 
 <table class='tablesorter shift open-files' id='tblOpenFiles'>
 <thead><tr><th>_(Process)_</th><th>_(Process ID)_</th><th>_(Kill Process)_</th><th>_(Open)_</th><th>_(May prevent shutdown)_</th><th>_(File Name and Path)_</th></tr></thead>
@@ -52,7 +54,7 @@ require_once "$docroot/plugins/$plugin/include/Legacy.php";
 
 <script type="text/javascript">
 /* URL for Open Files PHP file. */
-const OFURL = '/plugins/<?=$plugin;?>/include/OpenFiles.php';
+const OFURL = '/plugins/<?=OPEN_FILES_PLUGIN;?>/include/OpenFiles.php';
 
 function refreshPage() {
 	$.post(OFURL, {
@@ -68,6 +70,16 @@ function refreshPage() {
 	}, 'json');
 }
 
+<?if ($display['resize']):?>
+function resize() {
+  $('pre.up').height(Math.max(window.innerHeight-330,370)).show();
+}
+$(function() {
+  resize();
+  $(window).bind('resize',function(){resize();});
+});
+<?endif;?>
+
 /*
 	Check for a plugin update and show banner.
 */
@@ -79,4 +91,3 @@ $(function() {
 
 refreshPage();
 </script>
-<?endif;?>

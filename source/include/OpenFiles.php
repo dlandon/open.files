@@ -9,18 +9,17 @@
  * all copies or substantial portions of the Software.
  */
 
-$docroot = $docroot ?? $_SERVER['DOCUMENT_ROOT'] ?: '/usr/local/emhttp';
-$translations = file_exists("$docroot/webGui/include/Translations.php");
-
-if ($translations) {
-  /* add translations. */
-  $_SERVER['REQUEST_URI'] = 'openfiles';
-  require_once "$docroot/webGui/include/Translations.php";
-} else {
-  /* legacy support (without javascript). */
-  $noscript = true;
-  require_once "$docroot/plugins/$plugin/include/Legacy.php";
+/* Define the docroot path. */
+if (!defined('DOCROOT')) {
+	define('DOCROOT', $_SERVER['DOCUMENT_ROOT'] ?: '/usr/local/emhttp');
 }
+
+/* Get the Unraid Wrappers and Helpers files. */
+require_once(DOCROOT."/webGui/include/Helpers.php");
+
+/* add translations. */
+$_SERVER['REQUEST_URI'] = 'openfiles';
+require_once(DOCROOT."/webGui/include/Translations.php");
 
 switch ($_POST['action']) {
 	case 'open_files':
