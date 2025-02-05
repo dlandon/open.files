@@ -5,7 +5,7 @@ Icon="folder-open"
 Tabs="true"
 ---
 <?PHP
-/* Copyright 2015-2024, Dan Landon.
+/* Copyright 2015-2025, Dan Landon.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 2,
@@ -22,10 +22,8 @@ define('OPEN_FILES_PLUGIN', 'open.files');
 if (!defined('DOCROOT')) {
 	define('DOCROOT', $_SERVER['DOCUMENT_ROOT'] ?: '/usr/local/emhttp');
 }
-
-/* add translations. */
-$translations = file_exists(DOCROOT."/webGui/include/Translations.php");
 ?>
+
 <link type="text/css" rel="stylesheet" href="<?autov("/plugins/".OPEN_FILES_PLUGIN."/assets/style-$theme.css")?>">
 <link type="text/css" rel="stylesheet" href="<?autov("/plugins/".OPEN_FILES_PLUGIN."/assets/open-files.css")?>">
 
@@ -52,9 +50,9 @@ $translations = file_exists(DOCROOT."/webGui/include/Translations.php");
 <input type="button" value="_(Refresh)_" onclick="refresh()">
 <input type="button" value="_(Done)_" onclick="done()">
 
-<script type="text/javascript">
+<script>
 /* URL for Open Files PHP file. */
-const OFURL = '/plugins/<?=OPEN_FILES_PLUGIN;?>/include/OpenFiles.php';
+const OFURL = '/plugins/<?php echo OPEN_FILES_PLUGIN;?>/include/OpenFiles.php';
 
 function refreshPage() {
 	$.post(OFURL, {
@@ -70,20 +68,17 @@ function refreshPage() {
 	}, 'json');
 }
 
-<?if ($display['resize']):?>
-function resize() {
-  $('pre.up').height(Math.max(window.innerHeight-330,370)).show();
-}
 $(function() {
-  resize();
-  $(window).bind('resize',function(){resize();});
-});
-<?endif;?>
+	<?if ($display['resize']):?>
+	function resize() {
+	  $('pre.up').height(Math.max(window.innerHeight-330,370)).show();
+	}
 
-/*
-	Check for a plugin update and show banner.
-*/
-$(function() {
+	resize();
+	$(window).bind('resize',function(){resize();});
+	<?endif;?>
+
+	/* Check for a plugin update and show banner. */
 	if ( typeof caPluginUpdateCheck === "function" ) {
 		caPluginUpdateCheck("open.files.plg");
 	}

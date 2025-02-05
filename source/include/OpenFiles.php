@@ -1,5 +1,5 @@
 <?PHP
-/* Copyright 2015-2023, Dan Landon.
+/* Copyright 2015-2025, Dan Landon.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 2,
@@ -8,17 +8,19 @@
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
  */
+?>
 
+<?
 /* Define the docroot path. */
 if (!defined('DOCROOT')) {
 	define('DOCROOT', $_SERVER['DOCUMENT_ROOT'] ?: '/usr/local/emhttp');
 }
 
 /* Get the Unraid Wrappers and Helpers files. */
+require_once(DOCROOT."/webGui/include/Wrappers.php");
 require_once(DOCROOT."/webGui/include/Helpers.php");
 
-/* add translations. */
-$_SERVER['REQUEST_URI'] = 'openfiles';
+/* Get translations. */
 require_once(DOCROOT."/webGui/include/Translations.php");
 
 switch ($_POST['action']) {
