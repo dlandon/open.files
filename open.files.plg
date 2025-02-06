@@ -2,12 +2,12 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name       "open.files">
 <!ENTITY author     "dlandon">
-<!ENTITY version	"2024.12.19">
+<!ENTITY version	"2025.02.06">
 <!ENTITY launch		"Tools/OpenFiles">
 <!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://forums.unraid.net/topic/41196-open-files-plugin-can-help-with-troubleshooting-why-server-wont-shut-down/">
-<!ENTITY MD5		"87579a3609b4d39a866ce9dad26d2d11">
+<!ENTITY MD5		"dd902b91efc6803f8de7e1d328de3e94">
 ]>
 
 <PLUGIN	name="&name;"
@@ -22,6 +22,10 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Fix: Language translation updates.
+- Fix: Code cleanup for readability and robustness.
+
+###2024.12.19
 - Fix: Set minimum version to 6.11.
 - Fix: Some language file reorginization.
 - Fix: Change some php variables to constants that don't need to be variables.
@@ -134,7 +138,7 @@
 </CHANGES>
 
 <!--
-Copyright 2015-2024, Dan Landon
+Copyright 2015-2025, Dan Landon
 The Open Files plugin shows files that are open that could
 prevent a clean shutdown of the array and lets you kill those
 tasks.
@@ -179,7 +183,7 @@ The 'post-install' script.
 echo ""
 echo "-----------------------------------------------------------"
 echo " &name; is installed."
-echo " Copyright 2015-2024, &author;"
+echo " Copyright 2015-2025, &author;"
 echo " Version: &version;"
 echo "-----------------------------------------------------------"
 echo ""
