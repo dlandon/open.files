@@ -22,6 +22,10 @@ define('OPEN_FILES_PLUGIN', 'open.files');
 if (!defined('DOCROOT')) {
 	define('DOCROOT', $_SERVER['DOCUMENT_ROOT'] ?: '/usr/local/emhttp');
 }
+
+/* Get the Unraid Wrappers and Helpers files. */
+require_once(DOCROOT."/webGui/include/Wrappers.php");
+require_once(DOCROOT."/webGui/include/Helpers.php");
 ?>
 
 <link type="text/css" rel="stylesheet" href="<?autov("/plugins/".OPEN_FILES_PLUGIN."/assets/style-$theme.css")?>">
@@ -65,6 +69,19 @@ function refreshPage() {
 			/* Set up the table sorter. */
 			$('#tblOpenFiles').tablesorter({headers:{2:{sorter:false},3:{sorter:false}}});
 		}
+
+		/* Be sure tooltips are initialized. */
+		$('.tooltip').tooltipster({
+			trigger: 'custom',
+			triggerOpen: {
+				mouseenter: true
+			},
+			triggerClose: {
+				click: false,
+				scroll: true,
+				mouseleave: true
+			}
+		});
 	}, 'json');
 }
 
