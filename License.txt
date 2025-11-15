@@ -1,5 +1,3 @@
-### open.files plugin for unRAID
-
 Copyright (C) 2016 Dan Landon
 
 This program is free software; you can redistribute it and/or modify
