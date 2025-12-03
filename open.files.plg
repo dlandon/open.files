@@ -2,9 +2,9 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name       "open.files">
 <!ENTITY author     "dlandon">
-<!ENTITY version	"2025.10.04a">
+<!ENTITY version	"2025.12.03">
 <!ENTITY launch		"Tools/OpenFiles">
-<!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
+<!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://forums.unraid.net/topic/41196-open-files-plugin-can-help-with-troubleshooting-why-server-wont-shut-down/">
 <!ENTITY MD5		"459d8b43f47a41e17cfa58cf3aae9059">
@@ -22,6 +22,9 @@
 <CHANGES>
 ##&name;
 ###&version;
+- New: First releaase with versioning.
+
+###2025.10.04a
 - Fix: Enable Unraid style tooltips.
 
 ###2025.02.06
@@ -30,7 +33,7 @@
 
 ###2024.12.19
 - Fix: Set minimum version to 6.11.
-- Fix: Some language file reorginization.
+- Fix: Some language file reorganization.
 - Fix: Change some php variables to constants that don't need to be variables.
 
 ###2024.02.27
