@@ -1,0 +1,119 @@
+<?xml version='1.0' standalone='yes'?>
+<!DOCTYPE PLUGIN [
+<!ENTITY name		"open.files-next">
+<!ENTITY plugin		"open.files">
+<!ENTITY author		"dlandon">
+<!ENTITY version	"2025.12.05">
+<!ENTITY launch		"Tools/OpenFiles">
+<!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
+<!ENTITY pluginURL	"&gitURL;/&name;.plg">
+<!ENTITY supportURL	"https://github.com/dlandon/&name;/discussions">
+<!ENTITY MD5		"0fdfb8c1ee3b21f39adedd69b9b7268d">
+]>
+
+<PLUGIN	name="&plugin;"
+		author="&author;"
+		version="&version;"
+		launch="&launch;"
+		pluginURL="&pluginURL;"
+		support="&supportURL;"
+		icon="folder-open"
+		min="6.11.0">
+
+<CHANGES>
+##&name;
+###&version;
+- First release as Open Files (Next).
+
+###2025.12.05
+- Initial release under the new restrictive license.
+</CHANGES>
+
+<!--
+Copyright 2015-2025, Dan Landon
+The Open Files plugin shows files that are open that could
+prevent a clean shutdown of the array and lets you kill those
+tasks.
+-->
+
+<!--
+Get the plugin bundle.
+-->
+<FILE Name="/boot/config/plugins/&plugin;/&name;-&version;.tgz">
+<URL>"&gitURL;/&name;-&version;.tgz"</URL>
+<MD5>&MD5;</MD5>
+</FILE>
+
+<!--
+The 'pre-install' script.
+-->
+<FILE Run="/bin/bash">
+<INLINE>
+# The previous open files plugin cannot be installed.
+if [ -f /boot/config/plugins/&plugin;.plg ] ; then
+echo ""
+echo "-----------------------------------------------------------"
+echo " &name; has not been installed!"
+echo ""
+echo " The previous Open Files plugin is installed."
+echo ""
+echo " You must uninstall the Open Files plugin"
+echo " before installing Open Files (Next)."
+echo ""
+echo "-----------------------------------------------------------"
+echo ""
+exit 1
+fi
+
+# Remove emhttp files so we can re-install.
+rm -f -r /usr/local/emhttp/plugins/&plugin;/* 2>/dev/null
+
+# Remove old 'bundle' files.
+rm -f $(ls /boot/config/plugins/&plugin;/&name;*.tgz 2>/dev/null | grep -v '&version;')
+</INLINE>
+</FILE>
+
+<!--
+Install the plugin bundle.
+-->
+<FILE Run="/bin/bash">
+<INLINE>
+# Install the 'bundle'.
+tar -xf /boot/config/plugins/&plugin;/&name;-&version;.tgz -C /usr/local/emhttp/plugins 2>/dev/null
+</INLINE>
+</FILE>
+
+<!--
+The 'post-install' script.
+-->
+<FILE Run="/bin/bash">
+<INLINE>
+echo ""
+echo "-----------------------------------------------------------"
+echo " &name; is installed."
+echo " Copyright 2015-2025, &author;"
+echo " Version: &version;"
+echo "-----------------------------------------------------------"
+echo ""
+</INLINE>
+</FILE>
+
+<!--
+The 'remove' script.
+-->
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
+# Remove all plugin files.
+rm -f -r /usr/local/emhttp/plugins/&plugin; 2>/dev/null
+rm -f -r /boot/config/plugins/&plugin; 2>/dev/null
+
+echo ""
+echo "-----------------------------------------------------------"
+echo " &name; has been removed."
+echo " Version: &version;"
+echo "-----------------------------------------------------------"
+echo ""
+</INLINE>
+</FILE>
+
+</PLUGIN>
