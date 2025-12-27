@@ -3,9 +3,10 @@
 <!ENTITY name		"open.files-next">
 <!ENTITY plugin		"open.files">
 <!ENTITY author		"dlandon">
-<!ENTITY version	"2025.12.05">
+<!ENTITY version	"2025.12.27">
 <!ENTITY launch		"Tools/OpenFiles">
-<!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
+<!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
+<!ENTITY tgzURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://github.com/dlandon/&name;/discussions">
 <!ENTITY MD5		"0fdfb8c1ee3b21f39adedd69b9b7268d">
@@ -23,6 +24,9 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Fix: URL reference so the plugin will update.
+
+###2025.12.05
 - First release as Open Files (Next).
 </CHANGES>
 
